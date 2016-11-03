@@ -1,0 +1,11 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "author": "ChengRan",
+  "description": "图片上传",
+  "devDependencies": {
+    "supervisor": "^0.11.0",
+    "underscore": "^1.8.3"
+  },
+  "dependencies": {}
+}

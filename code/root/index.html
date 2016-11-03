@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>uploadImg</title>
+    <script src="./jquery-1.11.1.min.js"></script>
+    <script>
+
+       $(function(){
+
+           $('#file').change(function(){
+
+               var file = this.files[0];
+               readFile(file,function(e){
+
+
+                   var requestData = JSON.stringify({
+                       id: 3,
+                       file: e.target.result
+                   });
+
+                    //根据用户Id 获取用户详情
+                   $.ajax({
+                       url: 'http://localhost:8333/upload/uploadImg',
+                       data: requestData,
+                       type: 'post',
+                       dataType: 'json'
+                   }).done(function (data) {
+
+                       $('<img src="'+ data.data.fullFile +'">').appendTo($('body'))
+
+                   });
+               });
+
+           });
+
+       });
+
+       function readFile(file,callback){
+           var reader = new FileReader();
+           reader.readAsDataURL(file);
+           reader.onload = function (e) {
+               callback && callback(e)
+           };
+           reader.onerror = function (e) {
+               alert(e)
+           };
+       }
+
+
+
+    </script>
+</head>
+<body>
+
+<input type="file" id="file"/>
+
+
+</body>
+</html>
