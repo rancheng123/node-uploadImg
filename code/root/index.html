@@ -16,7 +16,8 @@
 
                    var requestData = JSON.stringify({
                        id: 3,
-                       file: e.target.result
+                       fileBufferStr: e.target.result,
+                       fileName: file.name
                    });
 
                     //根据用户Id 获取用户详情

@@ -1,7 +1,7 @@
 
 
 var _ = require('underscore');
-var createImgByDataUrl = require('../widget/createImgByDataUrl.js');
+var createFileByDataUrl = require('../widget/createFileByDataUrl.js');
 
 
 function Upload(){}
@@ -12,15 +12,16 @@ Upload.prototype = {
         //验证请求方式
         if(!isMethod('post')){
             return;
-        }
+        };
 
         //根据DataUrl 生成图片
-        createImgByDataUrl({
+        createFileByDataUrl({
 
             //图片放置目录
             path: '../root/tempImg/',
             //fileReader 传来的dataUrl
-            fileData: params.file,
+            fileData: params.fileBufferStr,
+            fileName: params.fileName,
             callback: function(fileName){
 
 
